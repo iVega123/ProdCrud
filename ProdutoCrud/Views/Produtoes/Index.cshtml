@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProdutoCrud.Models.Produto>
+
+@{
+    ViewData["Title"] = "Registro de Produtos";
+}
+
+<h4>Registro de Produtos</h4>
+<hr />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdutoNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdutoPreco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdutoEstoque)
+            </th>
+            <th>
+            <a asp-action="AdicionarOuEditar" class="btn btn-outline-success"> <i class="far fa-plus-square"></i> Adicionar Produto</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoPreco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoEstoque)
+            </td>
+            <td>
+                <a asp-action="AdicionarOuEditar" asp-route-id="@item.ProdutoID"><i class="fas fa-pen-alt"></i></a> 
+                <a asp-action="Delete" asp-route-id="@item.ProdutoID" class="text-danger ml-1" onclick="return confirm('Você tem certeza que quer deletar isso?')"><i class="fa fa-trash-alt fa-lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

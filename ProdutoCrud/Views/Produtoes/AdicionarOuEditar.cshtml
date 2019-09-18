@@ -1,0 +1,49 @@
+﻿@model ProdutoCrud.Models.Produto
+
+@{
+    ViewData["Title"] = "Formulário";
+}
+
+<h4>Formulário de Produto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="AdicionarOuEditar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProdutoID" />
+            <div class="form-group">
+                <label asp-for="ProdutoNome" class="control-label"></label>
+                <input asp-for="ProdutoNome" class="form-control" />
+                <span asp-validation-for="ProdutoNome" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="ProdutoPreco" class="control-label"></label>
+                    <input asp-for="ProdutoPreco" class="form-control"/>
+                    <span asp-validation-for="ProdutoPreco" class="text-danger"></span>
+                </div>
+            </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="ProdutoEstoque" class="control-label"></label>
+                    <input type="number" asp-for="ProdutoEstoque" class="form-control" />
+                    <span asp-validation-for="ProdutoEstoque" class="text-danger"></span>
+                </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                <input type="submit" value="Atualizar/Criar" class="btn btn-primary btn-block"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Voltar para a Lista</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar para a Lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
